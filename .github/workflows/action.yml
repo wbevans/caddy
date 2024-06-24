@@ -34,6 +34,7 @@ jobs:
           echo Version: $VER
           docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}:$VER
           docker push ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository }}:$VER
 
       - uses: actions/delete-package-versions@v5
         with: 
