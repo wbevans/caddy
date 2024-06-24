@@ -33,7 +33,7 @@ jobs:
 
       - uses: actions/delete-package-versions@v5
         with: 
-          package-name: 'ghcr.io/${{ github.repository }}'
+          package-name: 'caddy'
           package-type: 'container'
           min-versions-to-keep: 0
           delete-only-untagged-versions: 'true'
