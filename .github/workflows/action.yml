@@ -30,6 +30,9 @@ jobs:
       - name: 'Build Inventory Image'
         run: |
           docker build . --tag ghcr.io/${{ github.repository }}:latest
+          VER=`docker run ghcr.io/wbevans/caddy:latest caddy version | cut -d ' ' -f 1`
+          echo Version: $VER
+          docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}:$VER
           docker push ghcr.io/${{ github.repository }}:latest
 
       - uses: actions/delete-package-versions@v5
