@@ -32,7 +32,7 @@ jobs:
           docker build . --tag ghcr.io/${{ github.repository }}:latest
           VER=`docker run ghcr.io/${{ github.repository }}:latest caddy version | cut -d ' ' -f 1`
           docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}:$VER
-          docker push --all-tags ghcr.io/${{ github.repository }}:latest
+          docker push --all-tags ghcr.io/${{ github.repository }}
 
       - uses: actions/delete-package-versions@v5
         with: 
