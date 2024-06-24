@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  push-sortphotos-image:
+  push-image:
     runs-on: ubuntu-latest
     defaults:
       run:
