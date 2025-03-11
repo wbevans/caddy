@@ -32,11 +32,4 @@ jobs:
           docker build . --tag ghcr.io/${{ github.repository }}:latest
           VER=`docker run ghcr.io/${{ github.repository }}:latest caddy version | cut -d ' ' -f 1`
           docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}:$VER
-          docker manifest inspect ghcr.io/${{ github.repository }}:$VER || docker push ghcr.io/${{ github.repository }}:$VER
-
-      - uses: actions/delete-package-versions@v5
-        with: 
-          package-name: 'caddy'
-          package-type: 'container'
-          min-versions-to-keep: 0
-          delete-only-untagged-versions: 'true'
+          docker manifest inspect ghcr.io/${{ github.repository }}:$VER || docker push --all-tags ghcr.io/${{ github.repository }}
