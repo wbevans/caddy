@@ -27,13 +27,15 @@ services:
 
 ## Example Caddyfile
 
-1. Create [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
+1. Create [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/): Zone.Zone:Read and Zone.DNS:Edit permissions for permission for the domain(s) you're managing with Caddy
 
-2. Generate Caddy password hash:
+2. Create Cloudflare DNS records for subdomains
+
+3. Generate Caddy password hash:
 ```
 docker run -it ghcr.io/wbevans/caddy caddy hash-password
 ```
-3. Create ./caddy/etc/Caddyfile
+4. Create ./caddy/etc/Caddyfile
 ```
 {
     acme_dns cloudflare <cloudflare_api_key_here>
