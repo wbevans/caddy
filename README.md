@@ -3,9 +3,7 @@ Custom build of [Caddy](https://github.com/caddyserver/caddy) with the following
 - [Cloudflare module for Caddy](https://github.com/caddy-dns/cloudflare)
 - [WebDAV for Caddy](https://github.com/mholt/caddy-webdav)
 
-## Pulling private image
-
-### Pull image
+## Pull image
 ```
 docker pull ghcr.io/wbevans/caddy:latest
 ```
