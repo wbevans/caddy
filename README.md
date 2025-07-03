@@ -3,17 +3,13 @@ Custom build of [Caddy](https://github.com/caddyserver/caddy) with the following
 - [Cloudflare module for Caddy](https://github.com/caddy-dns/cloudflare)
 - [WebDAV for Caddy](https://github.com/mholt/caddy-webdav)
 
-## Pull image
-```
-docker pull ghcr.io/wbevans/caddy:latest
-```
 ## Example docker-compose.yml
 
 ```yaml
 services:
 
   caddy:
-    image: ghcr.io/wbevans/caddy-oauth2:latest
+    image: ghcr.io/wbevans/caddy:latest
     container_name: caddy
     restart: unless-stopped
     ports:
@@ -22,6 +18,7 @@ services:
       - ./caddy/data:/data
       - ./caddy/config:/config
       - ./caddy/etc:/etc/caddy
+      - ./caddy/webdav:/webdav
 
   librespeed:
     image: lscr.io/linuxserver/librespeed:latest
@@ -30,18 +27,26 @@ services:
 
 ## Example Caddyfile
 
-### ./caddy/etc/Caddyfile
-
+1. Generate password hash:
+```
+docker run -it ghcr.io/wbevans/caddy caddy hash-password
+```
+2. Create ./caddy/etc/Caddyfile
 ```
 {
-    acme_dns cloudflare <cloudflare api key>
+    acme_dns cloudflare <cloudflare_api_key_here>
+    order webdav before file_server
 }
 
-host1.example.com {
-	reverse_proxy http://librespeed:80
+speedtest.example.com {
+    reverse_proxy http://librespeed:80
 }
 
-host2.example.com {
-	reverse_proxy http://x.x.x.x:1234
+webdav.example.com {
+    root * /webdav
+    basicauth {
+        userid $2a$14$7APcTV9pn2ywUmo4uqba6uZjaspsV8R4W2SjtErI9CBob.xN9durK
+    }
+    webdav
 }
 ```
