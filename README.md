@@ -45,7 +45,7 @@ speedtest.example.com {
 webdav.example.com {
     root * /webdav
     basicauth {
-        userid $2a$14$7APcTV9pn2ywUmo4uqba6uZjaspsV8R4W2SjtErI9CBob.xN9durK
+        <userid> <password_hash>
     }
     webdav
 }
