@@ -1,7 +1,8 @@
-# Custom Caddy image with Cloudflare Auth and WebDav
+# Custom Caddy image with Cloudflare Auth, WebDav, & caddy-security
 Custom build of [Caddy](https://github.com/caddyserver/caddy) with the following plugins:
 - [Cloudflare module for Caddy](https://github.com/caddy-dns/cloudflare)
 - [WebDAV for Caddy](https://github.com/mholt/caddy-webdav)
+- [caddy-security](https://github.com/greenpau/caddy-security)
 
 ## Example docker-compose.yml
 
